@@ -60,7 +60,7 @@ Follow the instructions in its repository:
 git clone https://github.com/Musketeer-H2020/Hackaton2021.git
 ```
 
-3. Download the credential file musketeer.json of you team and save it in the root folder of this repository ('Hackaton2021' folder):
+3. Download the credential file musketeer.json of you team and save it in the root folder of this repository ('Hackaton2021' folder).
 
 
 4. Your credential file allow you to handle 11 different users (1 for the master node and 10 for the worker nodes). You must edit the following scripts:
@@ -72,39 +72,39 @@ script_malicious_workers.sh         -> Launch two workers that will be modified 
 
 You must modify the line to run the master:
 
-'''
+```
 python master_hackathon.py --user masteruser --password masteruser --task_name $1 --scenario 0
-'''
+```
 
 And every line to run a worker:
 
-'''
+```
 python worker_hackathon.py --user workeruser0 --password workeruser0 --task_name $1 --id 0 &
-'''
+```
 
 To use in every process each one of the users and password assigned to your team.
 
 5. Provide execution permissions to both scripts
 
-'''
+```
 chmod 777 script_master_and_honest_workers.sh
 chmod 777 script_malicious_workers.sh
-'''
+```
 
 6. Run both script to test that everything is correctly installed (use the conda or venv environment that you used to install MMLL-robust), as a parameter you must use a task name that must be the same in both scripts:
 
-'''
+```
 ./script_master_and_honest_workers.sh taskNameXXX
-'''
+```
 
-'''
+```
 ./script_malicious_workers.sh taskNameXXX
-'''
+```
 
 ## Hackathon Instructions
-***
+```
 
-The attacks have to be implemented in the file attack.py that contains two classes (ImplementedAttack1 and ImplementedAttack2). Each one of the two malicious workers will make use of these attacks.
+``` attacks have to be implemented in the file attack.py that contains two classes (ImplementedAttack1 and ImplementedAttack2). Each one of the two malicious workers will make use of these attacks.
 
 These classes contain two methods to be implemnted:
 
