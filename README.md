@@ -47,14 +47,59 @@ The participants must implement the attack of the two malicious workers. This at
 
 ## Installation
 ***
-First, it is neccesary to install the Robust-MMLL repository. 
+
+1. First, it is neccesary to install the Robust-MMLL. 
+
+Follow the instructions in its repository:
+
+[https://github.com/Musketeer-H2020/MMLL-Robust](https://github.com/Musketeer-H2020/MMLL-Robust).
+
+2. Clone this repository:
 
 ```
-$ git clone https://example.com
-$ cd ../path/to/the/file
-$ npm install
-$ npm start
+git clone https://github.com/Musketeer-H2020/Hackaton2021.git
 ```
+
+3. Download the credential file musketeer.json of you team and save it in the root folder of this repository ('Hackaton2021' folder):
+
+
+4. Your credential file allow you to handle 11 different users (1 for the master node and 10 for the worker nodes). You must edit the following scripts:
+
+```
+script_master_and_honest_workers.sh -> Launch the master and eight honest workers
+script_malicious_workers.sh         -> Launch two workers that will be modified in the hackaton to perform an attack
+```
+
+You must modify the line to run the master:
+
+'''
+python master_hackathon.py --user masteruser --password masteruser --task_name $1 --scenario 0
+'''
+
+And every line to run a worker:
+
+'''
+python worker_hackathon.py --user workeruser0 --password workeruser0 --task_name $1 --id 0 &
+'''
+
+To use in every process each one of the users and password assigned to your team.
+
+5. Provide execution permissions to both scripts
+
+'''
+chmod 777 script_master_and_honest_workers.sh
+chmod 777 script_malicious_workers.sh
+'''
+
+6. Run both script to test that everything is correctly installed (use the conda or venv environment that you used to install MMLL-robust), as a parameter you must use a task name that must be the same in both scripts:
+
+'''
+./script_master_and_honest_workers.sh taskNameXXX
+'''
+
+'''
+./script_malicious_workers.sh taskNameXXX
+'''
 
 ## Hackathon Instructions
 ***
@@ -65,6 +110,18 @@ These classes contain two methods to be implemnted:
 
 1. preprocess -> It is executed once at the begining of the training procedure. It receives the local dataset and returns a also a dataset. It can be used to perform modifications over the training dataset that will remain constant along the training procedure.
 2. process -> It will be executed every training iteration. It recieves the neural network, the dataset and the training parameters (batch size and number of epochs) and returns the neural network to be sent back to the master node.
+
+You can test you attack in an scenario with no defences using the scripts provided in the hackthon.
+
+In the Hackathon, for the final evaluation, we will run the script for the master and the honest workers, and participants must run the script with the malicious workers.
+
+We will evaluate the following scenarios:
+
+-No defences
+-Unknown defence 1
+-Unknown defence 2
+
+
 
 ## File Description
 ***
