@@ -117,9 +117,11 @@ In the Hackathon, for the final evaluation, we will run the script for the maste
 
 We will evaluate the following scenarios:
 
--No defences
--Unknown defence 1
--Unknown defence 2
+- No defences
+
+- Unknown defence 1
+
+- Unknown defence 2
 
 
 
