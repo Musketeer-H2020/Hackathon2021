@@ -102,9 +102,9 @@ chmod 777 script_malicious_workers.sh
 ```
 
 ## Hackathon Instructions
-```
+***
 
-``` attacks have to be implemented in the file attack.py that contains two classes (ImplementedAttack1 and ImplementedAttack2). Each one of the two malicious workers will make use of these attacks.
+The attacks have to be implemented in the file attack.py that contains two classes (ImplementedAttack1 and ImplementedAttack2). Each one of the two malicious workers will make use of these attacks.
 
 These classes contain two methods to be implemnted:
 
