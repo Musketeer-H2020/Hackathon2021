@@ -57,7 +57,7 @@ Follow the instructions in its repository:
 2. Clone this repository:
 
 ```
-git clone https://github.com/Musketeer-H2020/Hackaton2021.git
+git clone https://github.com/Musketeer-H2020/Hackathon2021.git
 ```
 
 3. Download the credential file musketeer.json of you team and save it in the root folder of this repository ('Hackaton2021' folder).
