@@ -75,6 +75,7 @@ You must modify the line to run the master:
 ```
 python master_hackathon.py --user masteruser --password masteruser --task_name $1 --scenario 0
 ```
+Currently, only scenario 0 is available as a parameter. The organizers of the Hackathon can run this script also for scenario 1 or 2.
 
 And every line to run a worker:
 
