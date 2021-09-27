@@ -43,8 +43,6 @@ from demo_tools.data_connectors.Load_from_file import Load_From_File as DC
 from demo_tools.mylogging.logger_v1 import Logger
 from demo_tools.evaluation_tools import display, plot_cm_seaborn, create_folders
 
-from comed import COMEDAveraging
-from afa import AFAAveraging
 
 # Set up logger
 logging.basicConfig(
@@ -159,8 +157,10 @@ if __name__ == "__main__":
     if scenario == 0:
         model_parameters['aggregator'] = None
     elif scenario == 1:
+        from comed import COMEDAveraging
         model_parameters['aggregator'] = COMEDAveraging()
     elif scenario == 2:
+        from afa import AFAAveraging
         model_parameters['aggregator'] = AFAAveraging()
 
     mn.create_model_Master(model_type, model_parameters=model_parameters)
