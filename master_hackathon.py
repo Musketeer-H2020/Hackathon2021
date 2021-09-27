@@ -30,7 +30,7 @@ from sklearn.preprocessing import LabelBinarizer
 
 
 # Add higher directory to python modules path.
-sys.path.append("../")
+sys.path.append("../Hackathon-Defences")
 os.environ['KMP_WARNINGS'] = 'off' # Remove KMP_AFFINITY logs
 
 # To be imported from MMLL (pip installed)
@@ -43,6 +43,8 @@ from demo_tools.data_connectors.Load_from_file import Load_From_File as DC
 from demo_tools.mylogging.logger_v1 import Logger
 from demo_tools.evaluation_tools import display, plot_cm_seaborn, create_folders
 
+from comed import COMEDAveraging
+from afa import AFAAveraging
 
 # Set up logger
 logging.basicConfig(
@@ -60,7 +62,7 @@ if __name__ == "__main__":
     parser.add_argument('--user', type=str, default=None, help='User')
     parser.add_argument('--password', type=str, default=None, help='Password')
     parser.add_argument('--task_name', type=str, default=None, help='Name of the task')
-    parser.add_argument('--scenario', type=int, default=0,choices=[0, 1], help='Hackaton scenario')
+    parser.add_argument('--scenario', type=int, default=0,choices=[0, 1, 2], help='Hackaton scenario')
 
     FLAGS, unparsed = parser.parse_known_args()
     user_name = FLAGS.user
@@ -157,8 +159,9 @@ if __name__ == "__main__":
     if scenario == 0:
         model_parameters['aggregator'] = None
     elif scenario == 1:
-        from MMLL.aggregators.aggregator import ModelMedian
-        model_parameters['aggregator'] = ModelMedian()
+        model_parameters['aggregator'] = COMEDAveraging()
+    elif scenario == 2:
+        model_parameters['aggregator'] = AFAAveraging()
 
     mn.create_model_Master(model_type, model_parameters=model_parameters)
     display('MMLL model %s is ready for training!' % model_type, logger, verbose) 
